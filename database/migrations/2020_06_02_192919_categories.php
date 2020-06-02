@@ -17,7 +17,8 @@ class Categories extends Migration
             $table->bigIncrements('category_id');
             $table->integer('category_parent_id')->default(0);
             $table->string('category_name', 100);
-            $table->string('category_icon', 25);
+            $table->string('category_icon', 25)->default('');
+            $table->boolean('category_allow_collection')->default(0);
         });
 
         Schema::create('field', function(Blueprint $table){
