@@ -71,22 +71,26 @@ class DatabaseSeeder extends Seeder
 
         DB::table('category')->insert([
             'category_name' => 'Livre',
-            'category_parent_id' => $id
+            'category_parent_id' => $id,
+            'category_allow_collection' => TRUE
         ]);
 
         DB::table('category')->insert([
             'category_name' => 'Comics',
-            'category_parent_id' => $id
+            'category_parent_id' => $id,
+            'category_allow_collection' => TRUE
         ]);
 
         DB::table('category')->insert([
             'category_name' => 'Manga',
-            'category_parent_id' => $id
+            'category_parent_id' => $id,
+            'category_allow_collection' => TRUE
         ]);
 
         DB::table('category')->insert([
             'category_name' => 'BD',
-            'category_parent_id' => $id
+            'category_parent_id' => $id,
+            'category_allow_collection' => TRUE
         ]);
         
         $id = DB::table('category')->insertGetId([
