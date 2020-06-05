@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 /*
@@ -17,4 +19,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/getCategories', 'CategoryController@getAll');
+Route::group(['prefix' => 'category'], function() {
+    Route::get('all', 'CategoryController@getAll');
+    Route::get('repartItemByUser', 'CategoryController@getRepartForUser');
+});
