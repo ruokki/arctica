@@ -27,6 +27,7 @@ class Categories extends Migration
             $table->string('field_name', 100);
             $table->string('field_label', 100);
             $table->string('field_type', 100);
+            $table->text('field_options')->nullable();
         });
     }
 
