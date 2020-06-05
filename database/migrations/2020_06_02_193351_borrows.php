@@ -21,9 +21,9 @@ class Borrows extends Migration
             $table->string('borrow_state', 2);
             $table->dateTime('borrow_date_begin');
             $table->dateTime('borrow_date_end');
-            $table->text('borrow_deny');
-            $table->text('borrow_duration');
-            $table->date('borrow_date_renew_asked');
+            $table->text('borrow_deny')->nullable();
+            $table->integer('borrow_duration')->nullable();
+            $table->date('borrow_date_renew_asked')->nullable();
             $table->timestamps();
         });
     }

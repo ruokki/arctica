@@ -35,6 +35,7 @@ class CategoryController extends Controller
         foreach($subCats as $one) {
             // Récupération des users pour chaque item
             foreach($one->itemsSub as $item) {
+                // @TODO Mettre l'id du user connecté dans le where
                 $repart[$one->category_id] = $item->users->where('user_id', 1)->count();
             }
         }

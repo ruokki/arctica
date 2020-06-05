@@ -23,3 +23,8 @@ Route::group(['prefix' => 'category'], function() {
     Route::get('all', 'CategoryController@getAll');
     Route::get('repartItemByUser', 'CategoryController@getRepartForUser');
 });
+
+Route::group(['prefix' => 'borrow'], function(){
+    Route::get('waitingLend', 'BorrowController@getMyWaitingLend');
+    Route::get('runningBorrow', 'BorrowController@getMyRunningBorrow');
+});
