@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\User;
+use App\Field;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,11 +15,8 @@ class CategoryController extends Controller
      */
     public function getAll() {
         $mainCat = Category::where('category_parent_id', 0)
+                    ->with(['children', 'children.fields'])
                     ->get();
-
-        foreach($mainCat as $one) {
-            $one->children;
-        }
 
         return response()->json($mainCat);
     }

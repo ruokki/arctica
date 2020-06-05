@@ -37,6 +37,13 @@ class Category extends Model
     }
 
     /**
+     * Champs associés à la catégorie
+     */
+    public function fields() {
+        return $this->hasMany('App\Field', 'category_id');
+    }
+
+    /**
      * Récupère les items liés à la catégorie pour un user
      * 
      * SELECT subcategory_id, COUNT(subcategory_id)
