@@ -273,7 +273,7 @@ class DatabaseSeeder extends Seeder
             $field = [
                 'field_name' => 'item_universe',
                 'field_label' => 'Série',
-                'field_type' => 'number'
+                'field_type' => 'text'
             ];
         }
         else if($type === 'type') {
