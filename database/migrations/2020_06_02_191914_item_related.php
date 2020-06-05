@@ -64,6 +64,9 @@ class ItemRelated extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('item');
+        Schema::dropIfExists('item_user');
+        Schema::dropIfExists('collection');
+        Schema::dropIfExists('wish');
     }
 }

@@ -35,6 +35,6 @@ class Borrows extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('borrow');
     }
 }
