@@ -22,6 +22,7 @@ $router->get('/', function () use ($router) {
 Route::group(['prefix' => 'category'], function() {
     Route::get('all', 'CategoryController@getAll');
     Route::get('repartItemByUser', 'CategoryController@getRepartForUser');
+    Route::get('{id}', 'CategoryController@getItems');
 });
 
 Route::group(['prefix' => 'borrow'], function(){

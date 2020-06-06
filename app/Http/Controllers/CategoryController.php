@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\User;
 use App\Field;
+use App\Item;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -39,6 +40,17 @@ class CategoryController extends Controller
         }
 
         return response()->json($repart);
+    }
+
+    /**
+     * Récupération des items associés à une catégorie
+     */
+    public function getItems($id) {
+        $items = Item::where('subcategory_id', $id)
+                ->with(['category', 'subcategory'])
+                ->get();
+        
+        return response()->json($items);
     }
 
 }
