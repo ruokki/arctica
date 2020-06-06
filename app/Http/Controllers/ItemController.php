@@ -41,8 +41,8 @@ class ItemController extends Controller
             $file = $request->file('item_img');
             if($file->isValid()) {
                 $newItem = new Item($request->input());
-
-                $file->move(storage_path('app/public'), $file->getClientOriginalName());
+                
+                $file->move(public_path('items/img'), $file->getClientOriginalName());
                 $newItem->item_img = $file->getClientOriginalName();
                 $newItem->push();
                 // @TODO Remplacer 1 par l'id du user connecté
