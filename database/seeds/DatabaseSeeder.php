@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
         DB::table('field')->insert($this->getField('release', $id));
         DB::table('field')->insert($this->getField('universe', $id));
 
-        $saga = DB::table('category')->insertGetId([
+        $id = DB::table('category')->insertGetId([
             'category_name' => 'Saga',
             'category_parent_id' => $main
         ]);

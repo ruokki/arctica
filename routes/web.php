@@ -28,3 +28,7 @@ Route::group(['prefix' => 'borrow'], function(){
     Route::get('waitingLend', 'BorrowController@getMyWaitingLend');
     Route::get('runningBorrow', 'BorrowController@getMyRunningBorrow');
 });
+
+Route::group(['prefix' => 'item'], function(){
+    Route::post('set', 'ItemController@setItem');
+});
