@@ -9,4 +9,8 @@ class Field extends Model
     protected $table = 'field';
 
     protected $primaryKey = 'field_id';
+
+    protected $casts = [
+        'field_options' => 'array'
+    ];
 }
