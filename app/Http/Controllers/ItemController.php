@@ -15,50 +15,41 @@ class ItemController extends Controller
      */
     public function setItem(Request $request) {
         // On va vérifier l'ensemble des champs communs à chaque objet
-        $validator = Validator::make($request->all(), [
+        $rules = [
             'item_name' => 'required',
             'item_descript' => 'required',
-            'category_id' => 'required',
-            'subcategory_id' => 'required',
             'item_img' => 'required'
-        ]);
+        ];
 
         $return = [
             'error' => FALSE
         ];
+
+        // On va aussi vérifier chaque champ spécifique
+        $cat = Category::find( $request->input('subcategory_id'));
+        foreach($cat->fields as $one) {
+            $rules[$one->field_name] = 'required';
+        }
+
+        $validator = Validator::make($request->all(), $rules);
         
         if($validator->fails()) {
             $return['error'] = TRUE;
             $return['errors'] = $validator->errors();
         }
         else {
-            // Les champs communs sont bons, on va vérifier chaque champ sépcifique
-            $cat = Category::find( $request->input('subcategory_id'));
-            $subRules = [];
-            foreach($cat->fields as $one) {
-                $subRules[$one->field_name] = 'required';
-            }
-            $subValidator = Validator::make($request->all(), $subRules);
+            $file = $request->file('item_img');
+            if($file->isValid()) {
+                $newItem = new Item($request->input());
 
-            if($subValidator->fails()) {
-                $return['error'] = TRUE;
-                $return['errors'] = $subValidator->errors();
+                $file->move(storage_path('app/public'), $file->getClientOriginalName());
+                $newItem->item_img = $file->getClientOriginalName();
+                $newItem->push();
+                // @TODO Remplacer 1 par l'id du user connecté
+                $user = User::find(1);
+                $newItem->users()->sync($user);
+                $newItem->push();
             }
-            else {
-                $file = $request->file('item_img');
-                if($file->isValid()) {
-                    $newItem = new Item($request->input());
-
-                    $file->move(storage_path('app/public'), $file->getClientOriginalName());
-                    $newItem->item_img = $file->getClientOriginalName();
-                    $newItem->push();
-                    // @TODO Remplacer 1 par l'id du user connecté
-                    $user = User::find(1);
-                    $newItem->users()->sync($user);
-                    $newItem->push();
-                }
-            }
-
         }
 
         return response()->json($return);

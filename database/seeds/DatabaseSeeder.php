@@ -87,7 +87,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('field')->insert($this->getField('creator', $id, 'Créateur'));
         DB::table('field')->insert($this->getField('release', $id));
-        DB::table('field')->insert($this->getField('type', $id, '', [
+        DB::table('field')->insert($this->getField('type', $id, 'Support', [
             'DVD',
             'Blu-Ray',
             'Démat'
@@ -100,7 +100,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('field')->insert($this->getField('creator', $id, 'Studio'));
         DB::table('field')->insert($this->getField('release', $id));
-        DB::table('field')->insert($this->getField('type', $id, '', [
+        DB::table('field')->insert($this->getField('type', $id, 'Support', [
             'DVD',
             'Blu-Ray',
             'Démat'
@@ -114,7 +114,7 @@ class DatabaseSeeder extends Seeder
         DB::table('field')->insert($this->getField('creator', $id, 'Studio'));
         DB::table('field')->insert($this->getField('release', $id));
         DB::table('field')->insert($this->getField('universe', $id));
-        DB::table('field')->insert($this->getField('type', $id, '', [
+        DB::table('field')->insert($this->getField('type', $id, 'Support', [
             'DVD',
             'Blu-Ray',
             'Démat'
@@ -190,7 +190,7 @@ class DatabaseSeeder extends Seeder
         DB::table('field')->insert($this->getField('universe', $id));
         DB::table('field')->insert($this->getField('editor', $id));
         DB::table('field')->insert($this->getField('release', $id));
-        DB::table('field')->insert($this->getField('type', $id, '', [
+        DB::table('field')->insert($this->getField('type', $id, 'Support', [
             'PS1',
             'PS2',
             'PS3',
