@@ -140,7 +140,6 @@ class DatabaseSeeder extends Seeder
         DB::table('field')->insert($this->getField('creator', $id, 'Auteur'));
         DB::table('field')->insert($this->getField('editor', $id));
         DB::table('field')->insert($this->getField('release', $id));
-        DB::table('field')->insert($this->getField('idx_collection', $id));
 
         $id = DB::table('category')->insertGetId([
             'category_name' => 'Comics',
@@ -151,7 +150,6 @@ class DatabaseSeeder extends Seeder
         DB::table('field')->insert($this->getField('creator', $id, 'Auteur'));
         DB::table('field')->insert($this->getField('editor', $id));
         DB::table('field')->insert($this->getField('release', $id));
-        DB::table('field')->insert($this->getField('idx_collection', $id));
 
         $id = DB::table('category')->insertGetId([
             'category_name' => 'Manga',
@@ -162,7 +160,6 @@ class DatabaseSeeder extends Seeder
         DB::table('field')->insert($this->getField('creator', $id, 'Auteur'));
         DB::table('field')->insert($this->getField('editor', $id));
         DB::table('field')->insert($this->getField('release', $id));
-        DB::table('field')->insert($this->getField('idx_collection', $id));
         
         $id = DB::table('category')->insertGetId([
             'category_name' => 'BD',
@@ -173,7 +170,6 @@ class DatabaseSeeder extends Seeder
         DB::table('field')->insert($this->getField('creator', $id, 'Auteur'));
         DB::table('field')->insert($this->getField('editor', $id));
         DB::table('field')->insert($this->getField('release', $id));
-        DB::table('field')->insert($this->getField('idx_collection', $id));
     }
 
     /**
