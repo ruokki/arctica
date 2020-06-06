@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Item;
 use App\Category;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -44,7 +45,18 @@ class ItemController extends Controller
                 $return['errors'] = $subValidator->errors();
             }
             else {
-                
+                $file = $request->file('item_img');
+                if($file->isValid()) {
+                    $newItem = new Item($request->input());
+
+                    $file->move(storage_path('app/public'), $file->getClientOriginalName());
+                    $newItem->item_img = $file->getClientOriginalName();
+                    $newItem->push();
+                    // @TODO Remplacer 1 par l'id du user connecté
+                    $user = User::find(1);
+                    $newItem->users()->sync($user);
+                    $newItem->push();
+                }
             }
 
         }

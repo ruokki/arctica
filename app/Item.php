@@ -10,6 +10,14 @@ class Item extends Model
     protected $table = 'item';
 
     protected $primaryKey = 'item_id';
+
+    protected $fillable = [
+        'item_name', 'category_id', 'subcategory_id', 'collection_id', 'item_descript',
+        'item_img', 'item_creator', 'item_release', 'item_editor', 'item_tracklist',
+        'item_idx_collection', 'item_universe', 'item_type'
+    ];
+
+    protected $guarded = [ 'item_id' ];
     
     /**
      * Liste des users associés à l'item

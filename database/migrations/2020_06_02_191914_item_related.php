@@ -21,13 +21,13 @@ class ItemRelated extends Migration
             $table->string('item_name', 255);
             $table->text('item_descript');
             $table->string('item_img', 100);
-            $table->string('item_creator', 100);
-            $table->string('item_release', 4);
-            $table->string('item_editor', 100);
-            $table->text('item_tracklist');
-            $table->integer('item_idx_collection');
-            $table->string('item_universe', 100);
-            $table->string('item_type', 100);
+            $table->string('item_creator', 100)->nullable();
+            $table->string('item_release', 4)->nullable();
+            $table->string('item_editor', 100)->nullable();
+            $table->text('item_tracklist')->nullable();
+            $table->integer('item_idx_collection')->nullable();
+            $table->string('item_universe', 100)->nullable();
+            $table->string('item_type', 100)->nullable();
             $table->timestamps();
         });
 
@@ -35,7 +35,7 @@ class ItemRelated extends Migration
             $table->id();
             $table->foreignId('item_id');
             $table->foreignId('user_id');
-            $table->boolean('item_borrowable');
+            $table->boolean('item_borrowable')->default(1);
         });
 
         Schema::create('collection', function(Blueprint $table) {
@@ -43,10 +43,10 @@ class ItemRelated extends Migration
             $table->string('collection_name', 255);
             $table->text('collection_descript');
             $table->integer('collection_length');
-            $table->string('collection_creator', 100);
-            $table->string('collection_editor', 100);
-            $table->string('collection_release', 100);
-            $table->string('collection_universe', 100);
+            $table->string('collection_creator', 100)->nullable();
+            $table->string('collection_editor', 100)->nullable();
+            $table->string('collection_release', 100)->nullable();
+            $table->string('collection_universe', 100)->nullable();
             $table->timestamps();
         });
 
