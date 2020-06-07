@@ -52,4 +52,29 @@ class BorrowController extends Controller
 
         return response()->json($return);
     }
+
+    /**
+     * Récupération des emprunts du user
+     */
+    public function getMyBorrow() {
+        $borrows = Borrow::where('lender_id', 1)
+                    ->with(['item', 'borrower'])
+                    ->orderBy('borrow_state', 'ASC')
+                    ->get();
+        
+        return response()->json($borrows);
+    }
+
+    /**
+     * Récupération des prêts du user
+     */
+    public function getMyLend() {
+        $borrows = Borrow::where('borrower_id', 1)
+                    ->with(['item', 'borrower'])
+                    ->whereNotIn('borrow_state', ['DE', 'GB'])
+                    ->orderBy('borrow_state', 'ASC')
+                    ->get();
+        
+        return response()->json($borrows);
+    }
 }

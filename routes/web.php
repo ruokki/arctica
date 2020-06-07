@@ -26,8 +26,13 @@ Route::group(['prefix' => 'category'], function() {
 });
 
 Route::group(['prefix' => 'borrow'], function(){
-    Route::get('waitingLend', 'BorrowController@getMyWaitingLend');
-    Route::get('runningBorrow', 'BorrowController@getMyRunningBorrow');
+    Route::get('running', 'BorrowController@getMyRunningBorrow');
+    Route::get('mine', 'BorrowController@getMyBorrow');
+});
+
+Route::group(['prefix' => 'lend'], function(){
+    Route::get('waiting', 'BorrowController@getMyWaitingLend');
+    Route::get('mine', 'BorrowController@getMyLend');
 });
 
 Route::group(['prefix' => 'item'], function(){
