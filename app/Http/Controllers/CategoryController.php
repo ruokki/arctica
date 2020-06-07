@@ -46,9 +46,17 @@ class CategoryController extends Controller
      * Récupération des items associés à une catégorie
      */
     public function getItems($id) {
-        $items = Item::where('subcategory_id', $id)
-                ->with(['category', 'subcategory'])
-                ->get();
+        if($id === 'mine') {
+            // @TODO Mettre l'id du user connecté
+            $items = Item::has('users', 1)
+                    ->with(['category', 'subcategory'])
+                    ->get();
+        }
+        else {
+            $items = Item::where('subcategory_id', $id)
+                    ->with(['category', 'subcategory'])
+                    ->get();
+        }
         
         return response()->json($items);
     }
