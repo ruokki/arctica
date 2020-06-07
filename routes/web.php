@@ -38,3 +38,8 @@ Route::group(['prefix' => 'lend'], function(){
 Route::group(['prefix' => 'item'], function(){
     Route::post('set', 'ItemController@setItem');
 });
+
+Route::group(['prefix' => 'user'], function(){
+    Route::post('create', 'UserController@createUser');
+    Route::post('connect', 'UserController@connectUser');
+});
